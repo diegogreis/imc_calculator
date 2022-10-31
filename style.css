@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  /* Colors */
+  --titleHeading: #0C3440;
+  --inputBg: #DCE2E9;
+  --inputLabel: #00453A;
+  --inputContent: #212529;
+  --inputPlcHolder: rgba(73, 80, 87, 0.5);
+  --inputBorder: rgba(73, 80, 87, 0.3);
+  --inputOutline: #02799D;
+
+  --buttonBg: #02799D;
+  --buttonHover: #0d6079;
+  --buttonContent: #FFFF; /* - Also for Error Content */
+
+  --errorBg: #F03E3E;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #040924;
+}
+
+body, input, button {
+  font-size: 1.6rem;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.card {
+  background-color: white;
+  max-width: 42.8rem;
+  background: #FFFFFF;
+  margin-inline: auto;
+  padding: 4.8rem 6.4rem 6.4rem;
+  box-shadow: 0px .2rem .4rem rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+}
+
+.title {
+  line-height: 4rem;
+  font-size: 3.2rem;
+  color: var(--titleHeading);
+  text-align: center;
+}
+
+main h1 {
+  margin-bottom: 3.2rem;
+}
+
+form {
+  width: 30rem;
+}
+
+form label {
+  display: block;
+  line-height: 1.8rem;
+  font-size: 1.4rem;
+  color: var(--inputLabel);
+  margin-bottom: .8rem;
+}
+
+form input {
+  width: 100%;
+  padding: 1.6rem;
+  border: 1px solid var(--inputBorder);
+  border-radius: .4rem;
+  background: var(--inputBg);
+}
+
+form input:focus {
+  outline: 2px solid var(--inputOutline)
+}
+
+form input::placeholder {
+  color: var(--inputPlcHolder);
+}
+
+.input-wrapper + .input-wrapper {
+  margin-top: 1.6rem;
+}
+
+form button {
+  width: 100%;
+  border: none;
+  border-radius: .4rem;
+  padding: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  margin-top: 3.2rem;
+  cursor: pointer;
+
+  font-weight: 700;
+  line-height: 2rem;
+
+  color: var(--buttonContent);
+  background: var(--buttonBg);
+
+  transition: background .3s;
+}
+
+form button:hover {
+  background: var(--buttonHover);
+}
+
+/* Modais */
+.card-wrapper.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.card-wrapper {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  
+  opacity: 0;     
+  visibility: hidden;
+}
+
+.card-wrapper .card {
+  position: relative;
+}
+
+.card-wrapper button {
+  border: none;
+  background: none;
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+  cursor: pointer;
+  
+  transition: transform .3s;
+}
+
+.card-wrapper button:hover {
+  transform: scale(1.2);
+}
+
+/* Error-box */
+.error-box.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  
+}
+
+.error-box {
+  background: var(--errorBg);
+  color: var(--inputBg);
+  padding: .8rem 0 .8rem;
+  text-align: center;
+  font-weight: 700;
+
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(-30px);
+  transition: transform .5s;
+  
+}
+
